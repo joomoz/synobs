@@ -1,0 +1,2 @@
+module ObservationStationsHelper
+end

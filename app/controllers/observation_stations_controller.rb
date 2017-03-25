@@ -1,0 +1,74 @@
+class ObservationStationsController < ApplicationController
+  before_action :set_observation_station, only: [:show, :edit, :update, :destroy]
+
+  # GET /observation_stations
+  # GET /observation_stations.json
+  def index
+    @observation_stations = ObservationStation.all
+  end
+
+  # GET /observation_stations/1
+  # GET /observation_stations/1.json
+  def show
+  end
+
+  # GET /observation_stations/new
+  def new
+    @observation_station = ObservationStation.new
+  end
+
+  # GET /observation_stations/1/edit
+  def edit
+  end
+
+  # POST /observation_stations
+  # POST /observation_stations.json
+  def create
+    @observation_station = ObservationStation.new(observation_station_params)
+
+    respond_to do |format|
+      if @observation_station.save
+        format.html { redirect_to @observation_station, notice: 'Observation station was successfully created.' }
+        format.json { render :show, status: :created, location: @observation_station }
+      else
+        format.html { render :new }
+        format.json { render json: @observation_station.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /observation_stations/1
+  # PATCH/PUT /observation_stations/1.json
+  def update
+    respond_to do |format|
+      if @observation_station.update(observation_station_params)
+        format.html { redirect_to @observation_station, notice: 'Observation station was successfully updated.' }
+        format.json { render :show, status: :ok, location: @observation_station }
+      else
+        format.html { render :edit }
+        format.json { render json: @observation_station.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /observation_stations/1
+  # DELETE /observation_stations/1.json
+  def destroy
+    @observation_station.destroy
+    respond_to do |format|
+      format.html { redirect_to observation_stations_url, notice: 'Observation station was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_observation_station
+      @observation_station = ObservationStation.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def observation_station_params
+      params.require(:observation_station).permit(:fmisid, :lpnn, :wmo, :name, :year, :lat, :lon, :elevation, :group)
+    end
+end

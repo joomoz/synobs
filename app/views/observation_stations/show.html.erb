@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fmisid:</strong>
+  <%= @observation_station.fmisid %>
+</p>
+
+<p>
+  <strong>Lpnn:</strong>
+  <%= @observation_station.lpnn %>
+</p>
+
+<p>
+  <strong>Wmo:</strong>
+  <%= @observation_station.wmo %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @observation_station.name %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @observation_station.year %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @observation_station.lat %>
+</p>
+
+<p>
+  <strong>Lon:</strong>
+  <%= @observation_station.lon %>
+</p>
+
+<p>
+  <strong>Elevation:</strong>
+  <%= @observation_station.elevation %>
+</p>
+
+<p>
+  <strong>Group:</strong>
+  <%= @observation_station.group %>
+</p>
+
+<%= link_to 'Edit', edit_observation_station_path(@observation_station) %> |
+<%= link_to 'Back', observation_stations_path %>

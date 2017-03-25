@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fmisid: 1
+  lpnn: 1
+  wmo: 1
+  name: MyString
+  year: 1
+  lat: 1.5
+  lon: 1.5
+  elevation: 1
+  group: MyString
+
+two:
+  fmisid: 1
+  lpnn: 1
+  wmo: 1
+  name: MyString
+  year: 1
+  lat: 1.5
+  lon: 1.5
+  elevation: 1
+  group: MyString

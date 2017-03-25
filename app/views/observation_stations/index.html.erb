@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Observation Stations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fmisid</th>
+      <th>Lpnn</th>
+      <th>Wmo</th>
+      <th>Name</th>
+      <th>Year</th>
+      <th>Lat</th>
+      <th>Lon</th>
+      <th>Elevation</th>
+      <th>Group</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @observation_stations.each do |observation_station| %>
+      <tr>
+        <td><%= observation_station.fmisid %></td>
+        <td><%= observation_station.lpnn %></td>
+        <td><%= observation_station.wmo %></td>
+        <td><%= observation_station.name %></td>
+        <td><%= observation_station.year %></td>
+        <td><%= observation_station.lat %></td>
+        <td><%= observation_station.lon %></td>
+        <td><%= observation_station.elevation %></td>
+        <td><%= observation_station.group %></td>
+        <td><%= link_to 'Show', observation_station %></td>
+        <td><%= link_to 'Edit', edit_observation_station_path(observation_station) %></td>
+        <td><%= link_to 'Destroy', observation_station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Observation station', new_observation_station_path %>

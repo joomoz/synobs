@@ -5,6 +5,8 @@ class ObservationStationsController < ApplicationController
   # GET /observation_stations.json
   def index
     @observation_stations = ObservationStation.all
+    # Check all active stations and add if there is a new stations
+    @new_stations = FmiApi.fetch_stations
   end
 
   # GET /observation_stations/1

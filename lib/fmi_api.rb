@@ -24,32 +24,20 @@ class FmiApi
         ObservationStation.create(fmisid:fmiid, wmo:wmo, name:name)
       end
     end
-  end
 
-  # Test version
-  def self.fetch_stations_v2
-    #Fetch all stations using current time (format: 2017-03-27T16:00:00Z) (UTC time)
-    time = Time.new
-    current_time = "#{time.strftime("%Y-%m-%d")}T#{time.utc.strftime("%H")}:00:00Z"
-
-    url = "http://data.fmi.fi/fmi-apikey/#{fmi_key}/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=22,59,27,61&starttime=#{current_time}&parameters=temperature"
-
-    response = HTTParty.get "#{url}"
-    return nil if response.code != 200
-
-    #stations = response.parsed_response["FeatureCollection"]["member"]["PointTimeSeriesObservation"]["featureOfInterest"]["SF_SpatialSamplingFeature"]["sampledFeature"]["LocationCollection"]["member"]["Location"]["name"]
-    stations = response.parsed_response["FeatureCollection"]["member"]["PointTimeSeriesObservation"]["featureOfInterest"]["SF_SpatialSamplingFeature"]["sampledFeature"]["LocationCollection"]["member"]["Location"]
-
-    #stations = [stations] if stations.is_a?(Hash)
-    #Not yet working
-    stations.each do | station |
-      name = station[0].first[1]
-      wmo = station[2].first[1]
-      puts name
-      puts wmo
-      #:fmisid, :lpnn, :wmo, :name, :year, :lat, :lon, :elevation, :group
-      ObservationStation.new(name:name, wmo:wmo)
+    # Parse lat lon info from xml
+    response.xpath('//gml:Point').each do |element|
+      stationName = element.xpath('gml:name').text
+      latlon = element.xpath('gml:pos').text
+      lat = latlon.split.first
+      lon = latlon.split.second
+      station = ObservationStation.find_by name: stationName
+      if (!station.nil?)
+        station.update(lat: lat, lon: lon)
+        station.save
+      end
     end
+
   end
 
   def self.fmi_key

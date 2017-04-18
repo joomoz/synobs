@@ -1,0 +1,77 @@
+<%= form_for(@observation) do |f| %>
+  <% if @observation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@observation.errors.count, "error") %> prohibited this observation from being saved:</h2>
+
+      <ul>
+      <% @observation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :fmisid %><br>
+    <%= f.number_field :fmisid %>
+  </div>
+  <div class="field">
+    <%= f.label :time %><br>
+    <%= f.datetime_select :time %>
+  </div>
+  <div class="field">
+    <%= f.label :t2m %><br>
+    <%= f.text_field :t2m %>
+  </div>
+  <div class="field">
+    <%= f.label :td %><br>
+    <%= f.text_field :td %>
+  </div>
+  <div class="field">
+    <%= f.label :ws_10min %><br>
+    <%= f.text_field :ws_10min %>
+  </div>
+  <div class="field">
+    <%= f.label :wg_10min %><br>
+    <%= f.text_field :wg_10min %>
+  </div>
+  <div class="field">
+    <%= f.label :wd_10min %><br>
+    <%= f.text_field :wd_10min %>
+  </div>
+  <div class="field">
+    <%= f.label :rh %><br>
+    <%= f.text_field :rh %>
+  </div>
+  <div class="field">
+    <%= f.label :r_1h %><br>
+    <%= f.text_field :r_1h %>
+  </div>
+  <div class="field">
+    <%= f.label :ri_10min %><br>
+    <%= f.text_field :ri_10min %>
+  </div>
+  <div class="field">
+    <%= f.label :snow_aws %><br>
+    <%= f.text_field :snow_aws %>
+  </div>
+  <div class="field">
+    <%= f.label :p_sea %><br>
+    <%= f.text_field :p_sea %>
+  </div>
+  <div class="field">
+    <%= f.label :vis %><br>
+    <%= f.text_field :vis %>
+  </div>
+  <div class="field">
+    <%= f.label :n %><br>
+    <%= f.text_field :n %>
+  </div>
+  <div class="field">
+    <%= f.label :wawa %><br>
+    <%= f.text_field :wawa %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

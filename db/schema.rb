@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170325160509) do
+ActiveRecord::Schema.define(version: 20170418160957) do
 
   create_table "observation_stations", force: :cascade do |t|
     t.integer  "fmisid"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 20170325160509) do
     t.float    "lon"
     t.integer  "elevation"
     t.string   "group"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "observations", force: :cascade do |t|
+    t.integer  "fmisid"
+    t.datetime "time"
+    t.float    "t2m"
+    t.float    "td"
+    t.float    "ws_10min"
+    t.float    "wg_10min"
+    t.float    "wd_10min"
+    t.float    "rh"
+    t.float    "r_1h"
+    t.float    "ri_10min"
+    t.float    "snow_aws"
+    t.float    "p_sea"
+    t.float    "vis"
+    t.float    "n"
+    t.float    "wawa"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

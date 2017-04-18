@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fmisid:</strong>
+  <%= @observation.fmisid %>
+</p>
+
+<p>
+  <strong>Time:</strong>
+  <%= @observation.time %>
+</p>
+
+<p>
+  <strong>T2m:</strong>
+  <%= @observation.t2m %>
+</p>
+
+<p>
+  <strong>Td:</strong>
+  <%= @observation.td %>
+</p>
+
+<p>
+  <strong>Ws 10min:</strong>
+  <%= @observation.ws_10min %>
+</p>
+
+<p>
+  <strong>Wg 10min:</strong>
+  <%= @observation.wg_10min %>
+</p>
+
+<p>
+  <strong>Wd 10min:</strong>
+  <%= @observation.wd_10min %>
+</p>
+
+<p>
+  <strong>Rh:</strong>
+  <%= @observation.rh %>
+</p>
+
+<p>
+  <strong>R 1h:</strong>
+  <%= @observation.r_1h %>
+</p>
+
+<p>
+  <strong>Ri 10min:</strong>
+  <%= @observation.ri_10min %>
+</p>
+
+<p>
+  <strong>Snow aws:</strong>
+  <%= @observation.snow_aws %>
+</p>
+
+<p>
+  <strong>P sea:</strong>
+  <%= @observation.p_sea %>
+</p>
+
+<p>
+  <strong>Vis:</strong>
+  <%= @observation.vis %>
+</p>
+
+<p>
+  <strong>N:</strong>
+  <%= @observation.n %>
+</p>
+
+<p>
+  <strong>Wawa:</strong>
+  <%= @observation.wawa %>
+</p>
+
+<%= link_to 'Edit', edit_observation_path(@observation) %> |
+<%= link_to 'Back', observations_path %>

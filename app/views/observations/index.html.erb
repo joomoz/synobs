@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Observations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fmisid</th>
+      <th>Time</th>
+      <th>T2m</th>
+      <th>Td</th>
+      <th>Ws 10min</th>
+      <th>Wg 10min</th>
+      <th>Wd 10min</th>
+      <th>Rh</th>
+      <th>R 1h</th>
+      <th>Ri 10min</th>
+      <th>Snow aws</th>
+      <th>P sea</th>
+      <th>Vis</th>
+      <th>N</th>
+      <th>Wawa</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @observations.each do |observation| %>
+      <tr>
+        <td><%= observation.fmisid %></td>
+        <td><%= observation.time %></td>
+        <td><%= observation.t2m %></td>
+        <td><%= observation.td %></td>
+        <td><%= observation.ws_10min %></td>
+        <td><%= observation.wg_10min %></td>
+        <td><%= observation.wd_10min %></td>
+        <td><%= observation.rh %></td>
+        <td><%= observation.r_1h %></td>
+        <td><%= observation.ri_10min %></td>
+        <td><%= observation.snow_aws %></td>
+        <td><%= observation.p_sea %></td>
+        <td><%= observation.vis %></td>
+        <td><%= observation.n %></td>
+        <td><%= observation.wawa %></td>
+        <td><%= link_to 'Show', observation %></td>
+        <td><%= link_to 'Edit', edit_observation_path(observation) %></td>
+        <td><%= link_to 'Destroy', observation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Observation', new_observation_path %>

@@ -15,6 +15,7 @@ class ObservationsController < ApplicationController
   # GET /observations/new
   def new
     @observation = Observation.new
+    FmiObservations.fetch_observations("100968")
   end
 
   # GET /observations/1/edit

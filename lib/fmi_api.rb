@@ -14,7 +14,6 @@ class FmiApi
 
     # Parsing station info from xml
     response.xpath('//target:Location').each do |element|
-      puts element.text
       fmiid = element.xpath('gml:identifier').text
       name = element.xpath('gml:name')[0].children.text
       geoid = element.xpath('gml:name')[1].children.text

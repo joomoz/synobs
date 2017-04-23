@@ -1,7 +1,7 @@
 class CreateObservations < ActiveRecord::Migration
   def change
     create_table :observations do |t|
-      t.integer :fmisid
+      t.integer :observation_station_id
       t.datetime :time
       t.float :t2m
       t.float :td

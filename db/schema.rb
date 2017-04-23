@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20170418160957) do
   end
 
   create_table "observations", force: :cascade do |t|
-    t.integer  "fmisid"
+    t.integer  "observation_station_id"
     t.datetime "time"
     t.float    "t2m"
     t.float    "td"
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20170418160957) do
     t.float    "vis"
     t.float    "n"
     t.float    "wawa"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

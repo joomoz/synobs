@@ -70,6 +70,6 @@ class ObservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def observation_params
-      params.require(:observation).permit(:fmisid, :time, :t2m, :td, :ws_10min, :wg_10min, :wd_10min, :rh, :r_1h, :ri_10min, :snow_aws, :p_sea, :vis, :n, :wawa)
+      params.require(:observation).permit(:observation_station_id, :time, :t2m, :td, :ws_10min, :wg_10min, :wd_10min, :rh, :r_1h, :ri_10min, :snow_aws, :p_sea, :vis, :n, :wawa)
     end
 end

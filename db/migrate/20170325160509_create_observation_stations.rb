@@ -1,7 +1,6 @@
 class CreateObservationStations < ActiveRecord::Migration
   def change
-    create_table :observation_stations, id: false do |t|
-      t.primary_key :id
+    create_table :observation_stations do |t|
       t.integer :lpnn
       t.integer :wmo
       t.string :name

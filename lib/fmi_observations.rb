@@ -18,13 +18,12 @@ class FmiObservations
     #n = response.xpath("count(//wfs:member)");
     #i = 0
     response.xpath('//wml2:MeasurementTimeseries').each do |element|
-      binding.pry
       parameter = element.xpath('//wml2:MeasurementTimeseries/@gml:id')[0].text
       parameter = parameter.split("-").last
       #JATKA TÄSTÄ!
-      if not Observation.where(fmisid: fmisid ).exists?
-        ObservationStation.create(fmisid:fmiid, wmo:wmo, name:name)
-      end
+      #if not Observation.where(fmisid: fmisid ).exists?
+      #  Observation.create(fmisid:fmisid)
+      #end
 
     end
 

@@ -21,7 +21,7 @@
   <tbody>
     <% @observation_stations.each do |observation_station| %>
       <tr>
-        <td><%= link_to observation_station.fmisid, observation_station %></td>
+        <td><%= link_to observation_station.id, observation_station %></td>
         <td><%= observation_station.lpnn %></td>
         <td><%= observation_station.wmo %></td>
         <td><%= link_to observation_station.name, observation_station %></td>

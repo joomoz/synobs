@@ -20,7 +20,7 @@ class FmiApi
       wmo = element.xpath('gml:name')[2].children.text
       city = element.xpath('target:region').text
       if not ObservationStation.where(name: name).exists?
-        ObservationStation.create(fmisid:fmiid, wmo:wmo, name:name)
+        ObservationStation.create(id:fmiid, wmo:wmo, name:name)
       end
     end
 

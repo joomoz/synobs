@@ -71,6 +71,6 @@ class ObservationStationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def observation_station_params
-      params.require(:observation_station).permit(:fmisid, :lpnn, :wmo, :name, :year, :lat, :lon, :elevation, :group)
+      params.require(:observation_station).permit(:id, :lpnn, :wmo, :name, :year, :lat, :lon, :elevation, :group)
     end
 end

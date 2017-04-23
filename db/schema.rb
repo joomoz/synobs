@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(version: 20170418160957) do
 
   create_table "observation_stations", force: :cascade do |t|
-    t.integer  "fmisid"
     t.integer  "lpnn"
     t.integer  "wmo"
     t.string   "name"

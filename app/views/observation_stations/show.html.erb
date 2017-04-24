@@ -1,48 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+<h2> <%= @observation_station %> </h2>
+
 <p>
-  <strong>Fmisid:</strong>
-  <%= @observation_station.id %>
+  <strong>
+    Fmisid: <%= @observation_station.id %> |
+    Wmo: <%= @observation_station.wmo %> |
+    <!-- Year: <%= @observation_station.year %> |
+    Lpnn: <%= @observation_station.lpnn %> |
+    Elevation: <%= @observation_station.elevation %> |
+    Group: <%= @observation_station.group %> -->
+  </strong>
 </p>
 
 <p>
-  <strong>Lpnn:</strong>
-  <%= @observation_station.lpnn %>
+ <% @observation_station.observations.each do |observation| %>
+   <strong>Temperature: </strong> <%= link_to observation.t2m, observation %>
+ <% end %>
 </p>
 
 <p>
-  <strong>Wmo:</strong>
-  <%= @observation_station.wmo %>
-</p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @observation_station.name %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @observation_station.year %>
-</p>
-
-<p>
-  <strong>Lat:</strong>
-  <%= @observation_station.lat %>
-</p>
-
-<p>
-  <strong>Lon:</strong>
-  <%= @observation_station.lon %>
-</p>
-
-<p>
-  <strong>Elevation:</strong>
-  <%= @observation_station.elevation %>
-</p>
-
-<p>
-  <strong>Group:</strong>
-  <%= @observation_station.group %>
+  <% if @observation_station.observations.empty? %>
+   Station doesn't have any observations.
+  <% else %>
+   Station has <%= pluralize(@observation_station.observations.count, 'observation') %>.
+  <% end %>
 </p>
 
 <%= link_to 'Edit', edit_observation_station_path(@observation_station) %> |

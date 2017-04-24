@@ -7,8 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="navibar">
+    <%= link_to 'Observation stations', observation_stations_path %>
+    <%= link_to 'Observations', observations_path %>
+  </div>
 
-<%= yield %>
+  <%= yield %>
 
 </body>
 </html>

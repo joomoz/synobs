@@ -43,6 +43,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-theme'
   gem 'sqlite3'
+  gem "better_errors"
 end
 
 group :production do

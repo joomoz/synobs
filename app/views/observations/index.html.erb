@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Observations</h1>
+<h1>Observations</h1>
 
 <table>
   <thead>
@@ -28,7 +28,7 @@
     <% @observations.each do |observation| %>
       <tr>
         <td><%= observation.observation_station_id %></td>
-        <td><%= observation.time %></td>
+        <td><%= link_to observation.time, observation %></td>
         <td><%= observation.t2m %></td>
         <td><%= observation.td %></td>
         <td><%= observation.ws_10min %></td>
@@ -42,7 +42,6 @@
         <td><%= observation.vis %></td>
         <td><%= observation.n %></td>
         <td><%= observation.wawa %></td>
-        <td><%= link_to 'Show', observation %></td>
         <td><%= link_to 'Edit', edit_observation_path(observation) %></td>
         <td><%= link_to 'Destroy', observation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

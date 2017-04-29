@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_secure_password
+
   has_many :favourite_stations, dependent: :destroy
   has_many :favourites, through: :favourite_stations, source: :observation_station
 

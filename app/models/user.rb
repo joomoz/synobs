@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
-  has_secure_password
 
   has_many :favourite_stations, dependent: :destroy
   has_many :favourites, through: :favourite_stations, source: :observation_station
+
+  has_secure_password
 
   validates :username, uniqueness: true,
                         length: { minimum: 4, maximum: 30 }

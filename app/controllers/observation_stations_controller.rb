@@ -13,6 +13,14 @@ class ObservationStationsController < ApplicationController
   # GET /observation_stations/1
   # GET /observation_stations/1.json
   def show
+    @favourite_stations = FavouriteStation.where(observation_station_id: @observation_station.id)
+
+    if current_user and current_user.favourites.include? @observation_station
+      @favourite_station = FavouriteStation.find_by ({user_id: current_user.id, observation_station: @observation_station})
+    else
+      @favourite_station = FavouriteStation.new
+      @favourite_station.observation_station = @observation_station
+    end
   end
 
   # GET /observation_stations/new

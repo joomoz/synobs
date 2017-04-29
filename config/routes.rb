@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :users
   resources :observations
   resources :observation_stations
+  resources :favourite_stations, only: [:new, :create, :destroy]
 
   resource :session, only: [:new, :create, :destroy]
 
+
   # You can have the root of your site routed with "root"
   root 'observation_stations#index'
+  match '*path' => redirect('/'), via: :get unless Rails.env.development?
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'

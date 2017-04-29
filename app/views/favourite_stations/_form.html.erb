@@ -1,0 +1,21 @@
+<%= form_for(@favourite_station) do |f| %>
+  <% if @favourite_station.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@favourite_station.errors.count, "error") %> prohibited this favourite_station from being saved:</h2>
+
+      <ul>
+      <% @favourite_station.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :observation_station_id %><br>
+    <%= f.select :observation_station_id, options_from_collection_for_select(@observation_stations, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

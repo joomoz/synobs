@@ -1,9 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
+<h1> <%= @user.username %></h1>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% if @user.favourites.any? %>
+  <h3>Favourite Stations</h3>
+
+  <p>
+    <% @user.favourites.each do |station| %>
+      <li>
+        <%= link_to station.name, station %>
+      </li>
+    <% end %>
+  </p>
+<% end %>
+
+<% if @user == current_user %>
+  <div class="btn btn-warning btn-sm">
+    <%= link_to 'Modify', edit_user_path(@user) %>
+  </div>
+  <div class="btn btn-danger btn-sm">
+    <%= link_to 'Delete this user', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>

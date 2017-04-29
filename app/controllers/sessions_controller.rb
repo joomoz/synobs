@@ -7,8 +7,12 @@ class SessionsController < ApplicationController
     # Fetch user from db
     user = User.find_by username: params[:username]
     # Save user_id to session
-    session[:user_id] = user.id if not user.nil?
-    redirect_to user
+    if user.nil?
+      redirect_to :back, notice: "User #{params[:username]} does not exist!"
+    else
+      session[:user_id] = user.id
+      redirect_to :root, notice: "Welcome #{params[:username]}!"
+    end
   end
 
   def destroy

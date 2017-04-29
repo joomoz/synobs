@@ -2,6 +2,20 @@
 
 <h2> <%= @observation_station %> </h2>
 
+<% if current_user and not current_user.in? @observation_station.users%>
+  <%= form_for(@favourite_station, method: "create") do |f| %>
+      <%= f.hidden_field :observation_station_id %>
+      <%= f.submit value:"Add as favourite station" %>
+   <% end %>
+<% end %>
+
+<% if current_user and current_user.in? @observation_station.users%>
+  <%= form_for(@favourite_station, method: "delete") do |f| %>
+      <%= f.hidden_field :observation_station_id %>
+      <%= f.submit value:"Remove from favourite stations" %>
+   <% end %>
+<% end %>
+
 <p>
   <strong>
     Fmisid: <%= @observation_station.id %> |

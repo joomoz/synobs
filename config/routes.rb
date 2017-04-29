@@ -5,12 +5,14 @@ Rails.application.routes.draw do
   resources :users
   resources :observations
   resources :observation_stations
-  
+
   resource :session, only: [:new, :create, :destroy]
 
   # You can have the root of your site routed with "root"
   root 'observation_stations#index'
   get 'signup', to: 'users#new'
+  get 'signin', to: 'sessions#new'
+  delete 'signout', to: 'sessions#destroy'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

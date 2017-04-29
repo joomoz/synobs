@@ -10,6 +10,11 @@
   <div class="navibar">
     <%= link_to 'Observation stations', observation_stations_path %>
     <%= link_to 'Observations', observations_path %>
+    <%= link_to 'Sign in', new_session_path %>
+    <%= link_to 'Sign up', signup_path %>
+    <% if not session[:user_id].nil? %>
+      Signed in as: <%= User.find(session[:user_id]).username %>
+    <% end %>
   </div>
 
   <%= yield %>

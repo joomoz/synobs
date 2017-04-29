@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418160957) do
+ActiveRecord::Schema.define(version: 20170429083358) do
 
   create_table "observation_stations", force: :cascade do |t|
     t.integer  "lpnn"
@@ -44,6 +44,12 @@ ActiveRecord::Schema.define(version: 20170418160957) do
     t.float    "wawa"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "username"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

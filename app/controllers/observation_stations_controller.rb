@@ -1,5 +1,6 @@
 class ObservationStationsController < ApplicationController
   before_action :set_observation_station, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate, only: [:edit, :update, :destroy]
 
   # GET /observation_stations
   # GET /observation_stations.json
@@ -73,4 +74,9 @@ class ObservationStationsController < ApplicationController
     def observation_station_params
       params.require(:observation_station).permit(:id, :lpnn, :wmo, :name, :year, :lat, :lon, :elevation, :group)
     end
+
+    def authenticate
+      raise "toteuta autentikointi"
+    end
+
 end

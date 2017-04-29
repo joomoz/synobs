@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
 
-
-  resources :observations
-  resources :observation_stations
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
+  resources :users
+  resources :observations
+  resources :observation_stations
+  
+  resource :session, only: [:new, :create, :destroy]
 
   # You can have the root of your site routed with "root"
-   root 'observation_stations#index'
+  root 'observation_stations#index'
+  get 'signup', to: 'users#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

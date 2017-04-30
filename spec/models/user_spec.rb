@@ -62,27 +62,36 @@ RSpec.describe User, type: :model do
 
     it "is saved with a proper ids" do
       fav = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:observation_station.id)
+      #create_favourite_station_with_observation_station(user, 98765)
 
       expect(user.favourites.count).to eq(1)
     end
 
     it "can have two favourites" do
-      fav1 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:observation_station.id)
-      station = FactoryGirl.create(:observation_station, id:55555, name:"Kumpula")
-      fav2 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:station.id)
+      create_favourite_station_with_observation_station(user, 98765)
+      create_favourite_station_with_observation_station(user, 23456)
 
       expect(user.favourites.count).to eq(2)
     end
 
     it "can have three favourites" do
-      fav1 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:observation_station.id)
-      station2 = FactoryGirl.create(:observation_station, id:55555, name:"Kumpula")
-      fav2 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:station2.id)
-      station3 = FactoryGirl.create(:observation_station, id:11111, name:"Kittilä")
-      fav3 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:station3.id)
+      create_favourite_stations(user, 11111, 22222, 33333)
 
       expect(user.favourites.count).to eq(3)
     end
 
+  end
+end
+
+def create_favourite_station_with_observation_station(user, observation_station_id)
+  station = FactoryGirl.create(:observation_station, id:observation_station_id, name:"XXX")
+  fav_station = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:station.id)
+
+  fav_station
+end
+
+def create_favourite_stations(user, *observation_station_ids)
+  observation_station_ids.each do |id|
+    create_favourite_station_with_observation_station(user, id)
   end
 end

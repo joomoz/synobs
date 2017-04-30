@@ -44,7 +44,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "with a proper password" do
-    let(:user){ User.create username:"John", password:"Passw1", password_confirmation:"Passw1" }
+    let(:user){ FactoryGirl.create(:user) }
 
     it "is saved" do
       expect(user).to be_valid
@@ -52,4 +52,37 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe "favourite station" do
+    let(:user){ FactoryGirl.create(:user) }
+    let(:observation_station){ FactoryGirl.create(:observation_station) }
+
+    it "count without any is 0" do
+      expect(user.favourites.count).to eq(0)
+    end
+
+    it "is saved with a proper ids" do
+      fav = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:observation_station.id)
+
+      expect(user.favourites.count).to eq(1)
+    end
+
+    it "can have two favourites" do
+      fav1 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:observation_station.id)
+      station = FactoryGirl.create(:observation_station, id:55555, name:"Kumpula")
+      fav2 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:station.id)
+
+      expect(user.favourites.count).to eq(2)
+    end
+
+    it "can have three favourites" do
+      fav1 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:observation_station.id)
+      station2 = FactoryGirl.create(:observation_station, id:55555, name:"Kumpula")
+      fav2 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:station2.id)
+      station3 = FactoryGirl.create(:observation_station, id:11111, name:"Kittilä")
+      fav3 = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:station3.id)
+
+      expect(user.favourites.count).to eq(3)
+    end
+
+  end
 end

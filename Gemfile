@@ -43,8 +43,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-theme'
   gem 'sqlite3'
-  #gem "better_errors"
-  # Access an IRB console on exception pages or by using <%= console %> in views
+  gem 'rspec-rails', '~> 3.5'
 end
 
 group :production do

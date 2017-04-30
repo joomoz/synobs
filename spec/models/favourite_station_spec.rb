@@ -20,13 +20,6 @@ RSpec.describe FavouriteStation, type: :model do
     expect(FavouriteStation.count).to eq(0)
   end
 
-  it "is not saved without a user id" do
-    fav_station = FavouriteStation.new observation_station_id:26
-
-    expect(fav_station).not_to be_valid
-    expect(FavouriteStation.count).to eq(0)
-  end
-
   describe "with a proper user id and observation station id" do
     let(:favourite_station){ FavouriteStation.create user_id:9, observation_station_id:65 }
 

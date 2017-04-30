@@ -6,8 +6,12 @@ FactoryGirl.define do
   end
 
   factory :observation_station do
-    id 99999
-    name "Helsinki"
+    sequence(:id)
+    name "Station"
+    # sequence :observation_station do |n|
+    #   id (10000 + n)
+    #   name "Station#{n}"
+    # end
   end
 
   factory :favourite_station do

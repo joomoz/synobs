@@ -13,8 +13,8 @@
       <th>Year</th>
       <th>Lat</th>
       <th>Lon</th>
-      <th>Elevation</th>
-      <th>Group</th>
+      <!-- <th>Elevation</th>
+      <th>Group</th> -->
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,10 +29,8 @@
         <td><%= observation_station.year %></td>
         <td><%= observation_station.lat %></td>
         <td><%= observation_station.lon %></td>
-        <td><%= observation_station.elevation %></td>
-        <td><%= observation_station.group %></td>
-        <td><%= link_to 'Edit', edit_observation_station_path(observation_station) %></td>
-        <td><%= link_to 'Destroy', observation_station, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- <td><%= observation_station.elevation %></td>
+        <td><%= observation_station.group %></td> -->
       </tr>
     <% end %>
   </tbody>

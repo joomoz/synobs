@@ -11,6 +11,8 @@ deploy:
   api_key:
     secure: irfGbv7+YGAiNGcIfCdccPPy2ahxqvmgy/AkvyVCPFCj4priuA2UHUGMGTwathhApIx1EnaSYnYX+USYt59KYVqSYql6lkGR4zaTYZ50CP+Lc8W9aUE5D5xPPaw6DZww9lrvZQaM7FXd7PWHGHR46k+/MOAVKFMOCkYPd5oQNYgxePS9WSrkyBRjwagc7nGQSOzW84spNfetNe7yxrppQTHIBEWFUqeBsLhAP15/5K5Woq7pkg4Nz7MXftycjbPdlqqCzhMOA2Fd7mOcFIwl2ZbR9o5T9k3mPpb6MDzKEbEIufTPs6QxU+8mUnXWXLFm/U4Mmvi7eycxM5LJK8O/jAfeW9NFxvVjICzR5oBg5g23h6L54NnxVRBd1SDOhcsnBzNf49h+qQ27o7UjYnDjy+LtJ2+cFYXljbGKSDYBKr2iCKnmXyAptvrUv7pZdPccIb8RvqHfI9YZkQEFed6E83VgDVgd8mbBShE10iwesCw27BFfzxoOeV9Jk0ZYozzizP4si1DefSkMsQY13AX6DkJq087to/EDtO2AwUPq4Q4vk/YK0dm/go/fjEKvaua2qWi0UQC3cJMGouBAQA640p/85U/etlS/VGXpt2TiRdve84NbsqbsapMj95ozNxtYQuxVff4MOuYlZruyIBBoGm8Vudh+W/x9FsOEYOc1Quw=
   app: synobs
-  run: "rake db:migrate"
+  run:
+    - "rake db:migrate"
+    - restart
   on:
     repo: joomoz/synobs

@@ -14,52 +14,19 @@ class ObservationsController < ApplicationController
 
   # GET /observations/new
   def new
-    @observation = Observation.new
-    FmiObservations.fetch_observations("100968")
-  end
-
-  # GET /observations/1/edit
-  def edit
-  end
-
-  # POST /observations
-  # POST /observations.json
-  def create
-    @observation = Observation.new(observation_params)
-
-    respond_to do |format|
-      if @observation.save
-        format.html { redirect_to observations_path, notice: 'Observation was successfully created.' }
-        format.json { render :show, status: :created, location: @observation }
-      else
-        format.html { render :new }
-        format.json { render json: @observation.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /observations/1
-  # PATCH/PUT /observations/1.json
-  def update
-    respond_to do |format|
-      if @observation.update(observation_params)
-        format.html { redirect_to @observation, notice: 'Observation was successfully updated.' }
-        format.json { render :show, status: :ok, location: @observation }
-      else
-        format.html { render :edit }
-        format.json { render json: @observation.errors, status: :unprocessable_entity }
-      end
-    end
+    # @observation = Observation.new
+    # FmiObservations.fetch_observations("100968")
   end
 
   # DELETE /observations/1
   # DELETE /observations/1.json
+  # This option Will be added for admin 
   def destroy
-    @observation.destroy
-    respond_to do |format|
-      format.html { redirect_to observations_url, notice: 'Observation was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # @observation.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to observations_url, notice: 'Observation was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

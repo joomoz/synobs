@@ -19,4 +19,9 @@ FactoryGirl.define do
     observation_station_id 1
   end
 
+  factory :observation do
+    sequence(:id)
+    observation_station_id 12345
+  end
+
 end

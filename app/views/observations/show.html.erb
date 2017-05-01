@@ -1,14 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Fmisid:</strong>
-  <%= @observation.observation_station_id %>
-</p>
+<h2> <%= link_to @observation.observation_station.name,  @observation.observation_station%> |
+   <%= @observation.observation_station_id %>
+</h2>
 
-<p>
-  <strong>Time:</strong>
-  <%= @observation.time %>
-</p>
+<h3> <%= @observation.time %> </h3>
 
 <p>
   <strong>T2m:</strong>
@@ -75,5 +71,4 @@
   <%= @observation.wawa %>
 </p>
 
-<%= link_to 'Edit', edit_observation_path(@observation) %> |
 <%= link_to 'Back', observations_path %>

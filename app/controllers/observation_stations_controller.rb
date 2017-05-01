@@ -1,7 +1,7 @@
 class ObservationStationsController < ApplicationController
   before_action :set_observation_station, only: [:show, :edit, :update, :destroy]
   before_action :ensure_that_signed_in, only: [:create, :edit, :update, :destroy]
-  
+
   # GET /observation_stations
   # GET /observation_stations.json
   def index
@@ -34,42 +34,45 @@ class ObservationStationsController < ApplicationController
 
   # POST /observation_stations
   # POST /observation_stations.json
+  # Stations are created with FmiApi
   def create
-    @observation_station = ObservationStation.new(observation_station_params)
-
-    respond_to do |format|
-      if @observation_station.save
-        format.html { redirect_to @observation_station, notice: 'Observation station was successfully created.' }
-        format.json { render :show, status: :created, location: @observation_station }
-      else
-        format.html { render :new }
-        format.json { render json: @observation_station.errors, status: :unprocessable_entity }
-      end
-    end
+    # @observation_station = ObservationStation.new(observation_station_params)
+    #
+    # respond_to do |format|
+    #   if @observation_station.save
+    #     format.html { redirect_to @observation_station, notice: 'Observation station was successfully created.' }
+    #     format.json { render :show, status: :created, location: @observation_station }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @observation_station.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /observation_stations/1
   # PATCH/PUT /observation_stations/1.json
+  # Stations are updated with FmiApi
   def update
-    respond_to do |format|
-      if @observation_station.update(observation_station_params)
-        format.html { redirect_to @observation_station, notice: 'Observation station was successfully updated.' }
-        format.json { render :show, status: :ok, location: @observation_station }
-      else
-        format.html { render :edit }
-        format.json { render json: @observation_station.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @observation_station.update(observation_station_params)
+    #     format.html { redirect_to @observation_station, notice: 'Observation station was successfully updated.' }
+    #     format.json { render :show, status: :ok, location: @observation_station }
+    #   else
+    #     format.html { render :edit }
+    #     format.json { render json: @observation_station.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /observation_stations/1
   # DELETE /observation_stations/1.json
+  # Will be added later for admins
   def destroy
-    @observation_station.destroy
-    respond_to do |format|
-      format.html { redirect_to observation_stations_url, notice: 'Observation station was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    # @observation_station.destroy
+    # respond_to do |format|
+    #   format.html { redirect_to observation_stations_url, notice: 'Observation station was successfully destroyed.' }
+    #   format.json { head :no_content }
+    # end
   end
 
   private

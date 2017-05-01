@@ -5,7 +5,7 @@
 <table>
   <thead>
     <tr>
-      <th>Fmisid</th>
+      <th>Station</th>
       <th>Time</th>
       <th>T2m</th>
       <th>Td</th>
@@ -27,7 +27,7 @@
   <tbody>
     <% @observations.each do |observation| %>
       <tr>
-        <td><%= observation.observation_station_id %></td>
+        <td><%= link_to observation.observation_station_id, observation.observation_station %></td>
         <td><%= link_to observation.time, observation %></td>
         <td><%= observation.t2m %></td>
         <td><%= observation.td %></td>
@@ -42,13 +42,9 @@
         <td><%= observation.vis %></td>
         <td><%= observation.n %></td>
         <td><%= observation.wawa %></td>
-        <td><%= link_to 'Edit', edit_observation_path(observation) %></td>
-        <td><%= link_to 'Destroy', observation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Observation', new_observation_path %>

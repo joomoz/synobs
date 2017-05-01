@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   resources :users
-  resources :observations
-  resources :observation_stations, except: [:new]
+  resources :observations, only: [:show, :index]
+  resources :observation_stations, only: [:show, :index] #, except: [:new, :edit, :create, :update, :destroy]
   resources :favourite_stations, only: [:new, :create, :destroy]
 
   resource :session, only: [:new, :create, :destroy]

@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :users
   resources :observations
-  resources :observation_stations
+  resources :observation_stations, except: [:new]
   resources :favourite_stations, only: [:new, :create, :destroy]
 
   resource :session, only: [:new, :create, :destroy]

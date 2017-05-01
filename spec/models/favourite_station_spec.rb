@@ -20,6 +20,23 @@ RSpec.describe FavouriteStation, type: :model do
     expect(FavouriteStation.count).to eq(0)
   end
 
+  describe "there can be" do
+    let!(:user) { FactoryGirl.create :user }
+    let!(:observation_station) { FactoryGirl.create :observation_station, name:"Helsinki" }
+
+    it "multiple favourites" do
+      add_multiple_favourite_stations(user, 3)
+
+      expect(user.favourites.count).to eq(3)
+    end
+
+    it "20 favourites" do
+      add_multiple_favourite_stations(user, 20)
+
+      expect(user.favourites.count).to eq(20)
+    end
+  end
+
   describe "with a proper user id and observation station id" do
     let(:favourite_station){ FavouriteStation.create user_id:9, observation_station_id:65 }
 
@@ -27,5 +44,18 @@ RSpec.describe FavouriteStation, type: :model do
       expect(favourite_station).to be_valid
       expect(FavouriteStation.count).to eq(1)
     end
+  end
+
+end
+
+def add_favourite_station_for_user(user)
+  station = FactoryGirl.create(:observation_station)
+  fav_station = FactoryGirl.create(:favourite_station, user_id:user.id, observation_station_id:station.id)
+  fav_station
+end
+
+def add_multiple_favourite_stations(user, n)
+  for i in 1..n
+   add_favourite_station_for_user(user)
   end
 end

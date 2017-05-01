@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
   def ensure_that_signed_in
-    redirect_to signin_path, notice:'You have to be signed in first!' if not current_user
+    redirect_to signin_path, notice:'You have to be signed in!' if not current_user
   end
 
   def only_admins

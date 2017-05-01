@@ -18,7 +18,7 @@ describe "User" do
       click_button('Add as favourite station')
     }.to change{FavouriteStation.count}.by(1)
     expect(user.favourites.count).to eq(1)
-    expect(page).to have_content "has been added to the favourites."
+    expect(page).to have_content "has been added to the favourites"
   end
 
   it "can remove station from a favourite stations" do

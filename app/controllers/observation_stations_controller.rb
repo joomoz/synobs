@@ -1,6 +1,7 @@
 class ObservationStationsController < ApplicationController
   before_action :set_observation_station, only: [:show, :edit, :update, :destroy]
-
+  before_action :ensure_that_signed_in, only: [:create, :edit, :update, :destroy]
+  
   # GET /observation_stations
   # GET /observation_stations.json
   def index
@@ -23,9 +24,9 @@ class ObservationStationsController < ApplicationController
   end
 
   # GET /observation_stations/new
-  def new
-    @observation_station = ObservationStation.new
-  end
+  # def new
+  #   @observation_station = ObservationStation.new
+  # end
 
   # GET /observation_stations/1/edit
   def edit

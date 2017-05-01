@@ -1,5 +1,6 @@
 class FavouriteStationsController < ApplicationController
   before_action :set_favourite_station, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_that_signed_in
 
   # GET /favourite_stations/new
   def new
@@ -12,17 +13,16 @@ class FavouriteStationsController < ApplicationController
   def create
     @favourite_station = FavouriteStation.new(favourite_station_params)
     respond_to do |format|
-      if current_user.nil?
-        redirect_to signin_path, notice:'You have to be signed in!'
+      if current_user.favourites.include? @favourite_station.observation_station
+        redirect_to @favourite_station.observation_station,
+          notice:"#{@favourite_station.observation_station.name} is already your favourite!"
       elsif @favourite_station.save
         current_user.favourite_stations << @favourite_station
         format.html { redirect_to @favourite_station.observation_station,
           notice: "#{@favourite_station.observation_station.name} has been added to the favourites." }
         format.json { render :show, status: :created, location: @favourite_station }
       else
-        @observation_stations = ObservationStation.all
-        format.html { render :new }
-        format.json { render json: @favourite_station.errors, status: :unprocessable_entity }
+        redirect_to root_path, notice:"That's not allowed!"
       end
     end
   end

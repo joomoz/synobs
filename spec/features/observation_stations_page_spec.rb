@@ -29,7 +29,7 @@ describe "Observation stations page" do
       click_link "Helsinki"
 
       expect(page).to have_content "Helsinki"
-      expect(page).to have_content "Station doesn't have any observations."
+      expect(page).to have_content "Station doesn't have any observations"
     end
 
   end

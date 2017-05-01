@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "User" do
   before :each do
-    FactoryGirl.create :user
+    user = FactoryGirl.create :user
   end
 
   describe "who has signed up" do
@@ -53,6 +53,16 @@ describe "User" do
       click_button('Update User')
 
       expect(page).to have_content 'User was successfully updated.'
+    end
+
+    it "can add observation station as a favourite station" do
+      click_link "Observation stations"
+      click_link "Turku Rajakari"
+
+      expect{
+        click_button('Add as favourite station')
+      }.to change{FavouriteStation.count}.by(1)
+      expect(page).to have_content "Turku Rajakari has been added to the favourites."
     end
 
   end

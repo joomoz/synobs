@@ -5,7 +5,8 @@ class ObservationStationsController < ApplicationController
   # GET /observation_stations
   # GET /observation_stations.json
   def index
-    @observation_stations = ObservationStation.all
+    #@observation_stations = ObservationStation.all
+    @observation_stations = ObservationStation.paginate(:page => params[:page], :per_page => 50)
     # Check all active stations and add if there is a new stations
     @new_stations = FmiApi.fetch_stations
   end

@@ -55,14 +55,29 @@ describe "User" do
       expect(page).to have_content 'User was successfully updated.'
     end
 
+    it "cannot modify password with insufficient details" do
+      click_link('Modify')
+      fill_in('user_password', with:'wrong')
+      fill_in('user_password_confirmation', with:'wrong')
+      click_button('Update User')
+
+      expect(page).to have_content 'error'
+    end
+
     it "can add observation station as a favourite station" do
+      station = FactoryGirl.create(:observation_station)
       click_link "Observation stations"
-      click_link "Turku Rajakari"
+      click_link "Station"
 
       expect{
         click_button('Add as favourite station')
       }.to change{FavouriteStation.count}.by(1)
-      expect(page).to have_content "Turku Rajakari has been added to the favourites."
+    end
+
+    it "can sign out" do
+      click_link "Sign out"
+
+      expect(current_path).to eq(root_path)
     end
 
   end
@@ -78,6 +93,18 @@ describe "User" do
       expect{
         click_button('Create User')
       }.to change{User.count}.by(1)
+    end
+
+    it "cannot sign up with bad credentials" do
+      visit signup_path
+      fill_in('user_username', with:'Mike')
+      fill_in('user_password', with:'pass')
+      fill_in('user_password_confirmation', with:'pass')
+
+      expect{
+        click_button('Create User')
+      }.to change{User.count}.by(0)
+      expect(page).to have_content 'error'
     end
   end
 

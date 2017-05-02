@@ -131,8 +131,6 @@
         null,
         null,
         null,
-        null,
-        null,
         1,
         12,
         null,
@@ -395,7 +393,7 @@
         null,
         null
       ],
-      "/home/jns/Dev/synobs/lib/fmi_api.rb": [
+      "/home/jns/Dev/synobs/lib/fmi_stations.rb": [
         0,
         0,
         0,
@@ -483,6 +481,6 @@
         0
       ]
     },
-    "timestamp": 1493743518
+    "timestamp": 1493745028
   }
 }

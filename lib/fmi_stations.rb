@@ -1,13 +1,13 @@
-class FmiApi
+class FmiStations
   require 'nokogiri'
   require 'open-uri'
 
-  #Fetch all stations using current time (format: 2017-03-27T16:00:00Z)
+  #Fetch all observation stations
   def self.fetch_stations
 
     time = Time.new
+    #Time format (format: 2017-03-27T16:00:00Z)
     current_time = "#{time.strftime("%Y-%m-%d")}T#{time.utc.strftime("%H")}:00:00Z"
-    #current_time = "#{time.strftime("%Y-%m-%d")}T00:00:00Z"
     url = "http://data.fmi.fi/fmi-apikey/#{fmi_key}/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=20,59,31,71&starttime=#{current_time}&parameters=temperature"
 
     # Using nokogiri to fetch xml data

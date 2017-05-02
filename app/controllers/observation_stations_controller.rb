@@ -24,7 +24,7 @@ class ObservationStationsController < ApplicationController
 
   # Check if there are some new stations available
   def fetch_stations
-    @new_stations = FmiApi.fetch_stations
+    @new_stations = FmiStations.fetch_stations
     redirect_to :back, notice:"Observation stations updated according to latest available info."
   end
 

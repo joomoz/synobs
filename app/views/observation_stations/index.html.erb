@@ -1,7 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Observation Stations</h1>
-<p> Number of stations: <%= @observation_stations.count %></p>
+<p> Number of stations: <%= @observation_stations.count %>
+  <% if current_user %> <!-- and current_user.admin %> -->
+   <%= link_to "Update list", fetch_stations_path, method: :post %>
+ <% end %>
+</p>
+
 
 <table>
   <thead>

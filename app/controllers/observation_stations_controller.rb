@@ -7,8 +7,6 @@ class ObservationStationsController < ApplicationController
   def index
     #@observation_stations = ObservationStation.all
     @observation_stations = ObservationStation.paginate(:page => params[:page], :per_page => 50)
-    # Check all active stations and add if there is a new stations
-    @new_stations = FmiApi.fetch_stations
   end
 
   # GET /observation_stations/1
@@ -22,6 +20,12 @@ class ObservationStationsController < ApplicationController
       @favourite_station = FavouriteStation.new
       @favourite_station.observation_station = @observation_station
     end
+  end
+
+  # Check if there are some new stations available
+  def fetch_stations
+    @new_stations = FmiApi.fetch_stations
+    redirect_to :back, notice:"Observation stations updated according to latest available info."
   end
 
   # GET /observation_stations/new

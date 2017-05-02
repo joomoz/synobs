@@ -7,6 +7,7 @@ class FmiApi
 
     time = Time.new
     current_time = "#{time.strftime("%Y-%m-%d")}T#{time.utc.strftime("%H")}:00:00Z"
+    #current_time = "#{time.strftime("%Y-%m-%d")}T00:00:00Z"
     url = "http://data.fmi.fi/fmi-apikey/#{fmi_key}/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=20,59,31,71&starttime=#{current_time}&parameters=temperature"
 
     # Using nokogiri to fetch xml data

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'signup', to: 'users#new'
   get 'signin', to: 'sessions#new'
   delete 'signout', to: 'sessions#destroy'
+  post 'fetch_stations' , to: 'observation_stations#fetch_stations'
 
   match '*path' => redirect('/'), via: :get unless Rails.env.development?
 

@@ -2,6 +2,10 @@
 
 <h2> <%= @observation_station %> </h2>
 
+<% if current_user %> <!-- and current_user.admin %> -->
+  <%= link_to "Update observations", fetch_observations_path(:fmisid => @observation_station.id), method: :post %>
+<% end %>
+
 <% if current_user and not current_user.in? @observation_station.users%>
   <%= form_for(@favourite_station, method: "create") do |f| %>
       <%= f.hidden_field :observation_station_id %>

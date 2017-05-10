@@ -20,7 +20,7 @@ class ObservationsController < ApplicationController
 
   # DELETE /observations/1
   # DELETE /observations/1.json
-  # This option Will be added for admin 
+  # This option Will be added for admin
   def destroy
     # @observation.destroy
     # respond_to do |format|

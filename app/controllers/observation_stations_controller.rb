@@ -28,6 +28,11 @@ class ObservationStationsController < ApplicationController
     redirect_to :back, notice:"Observation stations updated according to latest available info."
   end
 
+  def fetch_observations
+    @new_observations = FmiObservations.fetch_observations(params[:fmisid])
+    redirect_to :back, notice:"Observations updated."
+  end
+
   # GET /observation_stations/new
   # def new
   #   @observation_station = ObservationStation.new

@@ -35,6 +35,8 @@
         1,
         1,
         null,
+        null,
+        null,
         null
       ],
       "/home/jns/Dev/synobs/app/models/observation_station.rb": [
@@ -103,8 +105,8 @@
         1,
         null,
         1,
-        257,
-        221,
+        269,
+        232,
         null,
         null,
         1,
@@ -141,6 +143,11 @@
         6,
         null,
         null,
+        null,
+        null,
+        1,
+        0,
+        0,
         null,
         null,
         1,
@@ -478,9 +485,26 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
         0
       ]
     },
-    "timestamp": 1494405543
+    "timestamp": 1494427588
   }
 }

@@ -32,12 +32,6 @@
 </p>
 
 <p>
- <% @observation_station.observations.each do |observation| %>
-   <strong>Temperature: </strong> <%= link_to observation.t2m, observation %>
- <% end %>
-</p>
-
-<p>
   <% if @observation_station.observations.empty? %>
    Station doesn't have any observations.
   <% else %>

@@ -16,9 +16,9 @@
 
 <% if @user == current_user %>
   <div class="btn btn-warning btn-sm">
-    <%= link_to 'Modify', edit_user_path(@user) %>
+    <%= link_to 'Change password', edit_user_path(@user) %>
   </div>
   <div class="btn btn-danger btn-sm">
-    <%= link_to 'Delete this user', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Delete your user account', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 <% end %>

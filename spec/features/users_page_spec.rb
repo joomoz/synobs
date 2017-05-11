@@ -41,13 +41,13 @@ describe "User" do
     it "can remove his/hers account" do
 
       expect{
-        click_link('Delete this user')
+        click_link('Delete your user account')
       }.to change{User.count}.by(-1)
       expect(page).to have_content 'User was successfully destroyed'
     end
 
     it "can modify his/hers password" do
-      click_link('Modify')
+      click_link('Change password')
       fill_in('user_password', with:'AnotherPass1')
       fill_in('user_password_confirmation', with:'AnotherPass1')
       click_button('Update User')
@@ -56,7 +56,7 @@ describe "User" do
     end
 
     it "cannot modify password with insufficient details" do
-      click_link('Modify')
+      click_link('Change password')
       fill_in('user_password', with:'wrong')
       fill_in('user_password_confirmation', with:'wrong')
       click_button('Update User')

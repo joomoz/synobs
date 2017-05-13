@@ -29,8 +29,8 @@ class ObservationStationsController < ApplicationController
   end
 
   def fetch_observations
-    @new_observations = FmiObservations.fetch_observations(params[:fmisid])
-    #@new_observations = FmiObservations.fetch_all_observations(params[:fmisid])
+    #@new_observations = FmiObservations.fetch_observations(params[:fmisid])
+    @new_observations = FmiObservations.fetch_all_observations(params[:fmisid])
     redirect_to :back, notice:"Observations updated."
   end
 

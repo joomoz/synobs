@@ -5,6 +5,9 @@
   <% if current_user %> <!-- and current_user.admin %> -->
     <%= link_to "Update list", fetch_stations_path, method: :post %>
   <% end %>
+  <% if current_user %> <!-- and current_user.admin %> -->
+    <%= link_to "Update todays temperatures", fetch_all_observations_path, method: :post %>
+  <% end %>
 </p>
 
 

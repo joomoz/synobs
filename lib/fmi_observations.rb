@@ -17,27 +17,42 @@ class FmiObservations
     saveObservationsToDB(obsHash, fmisid)
   end
 
-  def self.fetch_all_observations_from_all_stations
-    #Beginning of day
+  def self.fetch_observations_from_all_stations
     time = Date.today.to_time.beginning_of_day.utc
     local_day_starts_at = "#{time.strftime("%Y-%m-%d")}T#{time.utc.strftime("%H")}:00:00Z"
     timestep = 10 #minutes
-
-    url = "http://data.fmi.fi/fmi-apikey/#{fmi_key}/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=18,58,33,71&starttime=#{local_day_starts_at}&timestep=#{timestep}"
+    #start = Time.now
+    url = "http://data.fmi.fi/fmi-apikey/#{fmi_key}/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=18,58,33,71&starttime=#{local_day_starts_at}&timestep=#{timestep}&parameters=temperature"
     response = HTTParty.get url
     observations = response.parsed_response["FeatureCollection"]["member"]
-    fmisid = observations[0]["PointTimeSeriesObservation"]["featureOfInterest"]["SF_SpatialSamplingFeature"]["sampledFeature"]["LocationCollection"]["member"]["Location"]["identifier"].first[1]
-
-    obsHash = Hash.new()
-    obsHash = saveObservationsToHash(observations, obsHash)
-    saveObservationsToDB(obsHash, fmisid)
+    # finish = Time.now
+    # diff = finish - start
+    saveAllObservationsToDB(observations)
   end
 
 
   private
+
+    # Save all observations to db
+    def self.saveAllObservationsToDB(observations)
+      observations.each do |station|
+        fmisid = station["PointTimeSeriesObservation"]["featureOfInterest"]["SF_SpatialSamplingFeature"]["sampledFeature"]["LocationCollection"]["member"]["Location"]["identifier"].first[1]
+        measurements = station["PointTimeSeriesObservation"]["result"]["MeasurementTimeseries"]["point"]
+        measurements.each do |obs|
+          value = obs["MeasurementTVP"]["value"]
+          time = obs["MeasurementTVP"]["time"]
+          time = convertMetTimeToDateTime(time)
+          if (Observation.find_by time: time, observation_station_id: fmisid).nil?
+            Observation.create(observation_station_id: fmisid, time: time, t2m: value)
+          end
+        end
+      end
+    end
+
     # Save observations into a hash
     def self.saveObservationsToHash(observations, obsHash)
       observations.map do | obs |
+        fmisid = obs["PointTimeSeriesObservation"]["featureOfInterest"]["SF_SpatialSamplingFeature"]["sampledFeature"]["LocationCollection"]["member"]["Location"]["identifier"].first[1]
         param = obs["PointTimeSeriesObservation"]["featureOfInterest"]["SF_SpatialSamplingFeature"]["sampledFeature"]["LocationCollection"]["id"].split("-").last
         measurements = obs["PointTimeSeriesObservation"]["result"]["MeasurementTimeseries"]["point"]
         n = 0

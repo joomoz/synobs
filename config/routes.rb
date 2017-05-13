@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
   post 'fetch_stations', to: 'observation_stations#fetch_stations'
   post 'fetch_observations', to: 'observation_stations#fetch_observations'
+  post 'fetch_all_observations', to: 'observation_stations#fetch_all_observations'
 
   match '*path' => redirect('/'), via: :get unless Rails.env.development?
 

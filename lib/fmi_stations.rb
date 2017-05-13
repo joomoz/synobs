@@ -4,11 +4,12 @@ class FmiStations
 
   #Fetch all observation stations
   def self.fetch_stations
-
-    time = Time.new
     #Time format (format: 2017-03-27T16:00:00Z)
-    current_time = "#{time.strftime("%Y-%m-%d")}T#{time.utc.strftime("%H")}:00:00Z"
-    url = "http://data.fmi.fi/fmi-apikey/#{fmi_key}/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=20,59,31,71&starttime=#{current_time}&parameters=temperature"
+    #time = Time.new
+    #current_time = "#{time.strftime("%Y-%m-%d")}T#{time.utc.strftime("%H")}:00:00Z"
+    time = Date.today.to_time.beginning_of_day.utc
+    local_day_starts_at = "#{time.strftime("%Y-%m-%d")}T#{time.utc.strftime("%H")}:00:00Z"
+    url = "http://data.fmi.fi/fmi-apikey/#{fmi_key}/wfs?request=getFeature&storedquery_id=fmi::observations::weather::timevaluepair&bbox=18,58,33,71&starttime=#{local_day_starts_at}&timestep=60&parameters=temperature"
 
     # Using nokogiri to fetch xml data
     response = Nokogiri::XML(open(url))

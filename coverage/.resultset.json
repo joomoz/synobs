@@ -450,6 +450,7 @@
         0,
         0,
         0,
+        0,
         0
       ],
       "/home/jns/Dev/synobs/lib/fmi_observations.rb": [
@@ -533,17 +534,9 @@
         0,
         0,
         0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
         0
       ]
     },
-    "timestamp": 1494676263
+    "timestamp": 1494687264
   }
 }

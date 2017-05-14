@@ -7,7 +7,7 @@ class ObservationStation < ActiveRecord::Base
   validates :name, presence: true
 
   def to_s
-    "#{name} | Location: #{lat}, #{lon}"
+    "#{name} [#{lat}, #{lon}]"
   end
 
 end

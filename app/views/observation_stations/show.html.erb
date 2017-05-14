@@ -18,6 +18,8 @@
    <% end %>
 <% end %>
 
+<br>
+
 <p>
   <strong>
     Fmisid: <%= @observation_station.id %> |
@@ -35,11 +37,25 @@
 
 <div class="google-maps">
   <iframe src="//www.google.com/maps/embed/v1/place?q=<%= @observation_station.lat %>, <%= @observation_station.lon %>
-      &zoom=9
-      &key=<%= ENV['GOOGLE_API_KEY'] %>"
-      width="500" height="350"
-      frameborder="0">
+    &key=<%= ENV['GOOGLE_API_KEY'] %>
+    &center=<%= @observation_station.lat %>, <%= @observation_station.lon %>
+    &zoom=16
+    &maptype=satellite"
+    width="600" height="400"
+    frameborder="0">
   </iframe>
 </div>
+
+<!-- <div class="google-maps">
+  <iframe src="//www.google.com/maps/embed/v1/place?q=<%= @observation_station.lat %>, <%= @observation_station.lon %>
+    &zoom=18
+    &key=<%= ENV['GOOGLE_API_KEY'] %>"
+    width="500" height="350"
+    frameborder="0">
+  </iframe>
+</div> -->
+
+
+
 
 <%= link_to 'Back', observation_stations_path %>

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Observations  page" do
+describe "Observations page" do
   it "should show observations index page" do
     visit observations_path
     #save_and_open_page

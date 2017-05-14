@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Synobs</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div class="navibar">
-    <%= link_to 'Observation stations', observation_stations_path %>
-    <%= link_to 'Observations', observations_path %>
-    <% if current_user %>
-      Signed in as: <%= link_to current_user.username, current_user %>
-      <!-- <%= link_to 'Add favourite station', new_favourite_station_path %> -->
-      <%= link_to 'Sign out', signout_path, method: :delete, data: {confirm: 'Sign out?'} %>
-    <% else %>
-      <%= link_to 'Sign in', signin_path %>
-      <%= link_to 'Sign up', signup_path %>
-    <% end %>
-  </div>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "Synobs" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Synobs" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
 
-  <%= yield %>
+    <main role="main" class=".container">
+      <%= render 'layouts/messages' %>
 
-</body>
+      <div class="row">
+        <div class="col-md-8">
+          <%= yield %>
+        </div>
+        <div class="col-md-4">
+          <img src="/assets/fmi_open.png" width="200">
+        </div>
+      </div>
+    </main>
+
+  </body>
 </html>

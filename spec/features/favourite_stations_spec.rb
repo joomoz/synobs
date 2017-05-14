@@ -25,7 +25,7 @@ describe "Favourite station" do
     it "can be removed" do
       visit new_favourite_station_path
       click_button('Create Favourite station')
-      click_link 'John'
+      click_link 'My page'
       click_link 'Helsinki'
 
       expect{

@@ -14,7 +14,8 @@ describe "User" do
       click_button('Sign in')
       #save_and_open_page
 
-      expect(page).to have_content 'Signed in as: John'
+      expect(page).to have_content 'John'
+      expect(page).to have_content 'Welcome John'
     end
 
     it "is redirected back to signin form if wrong credentials given" do
@@ -35,7 +36,7 @@ describe "User" do
       fill_in('username', with:'John')
       fill_in('password', with:'Pass1')
       click_button('Sign in')
-      click_link('John')
+      click_link('My page')
     end
 
     it "can remove his/hers account" do

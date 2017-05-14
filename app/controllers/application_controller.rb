@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
     redirect_to signin_path, notice:'You have to be signed in!' if not current_user
   end
 
-  def only_admins
-    redirect_to root, notice:'Only admins can do that!' if not current_user.admin
-  end
+  # def only_admins
+  #   redirect_to root, notice:'Only admins can do that!' if not current_user.admin
+  # end
 
 end

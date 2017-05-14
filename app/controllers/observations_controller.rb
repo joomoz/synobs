@@ -11,7 +11,7 @@ class ObservationsController < ApplicationController
   # GET /observations/1
   # GET /observations/1.json
   def show
-    @observations = Observation.all#.paginate(:page => params[:page], :per_page => 50)
+    #@observations = Observation.all#.paginate(:page => params[:page], :per_page => 50)
   end
 
   # GET /observations/new

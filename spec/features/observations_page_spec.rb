@@ -15,15 +15,15 @@ describe "Observations  page" do
       visit observations_path
     end
 
-    it "lists the existing observations" do
-      expect(page).to have_content observation.observation_station_id
-    end
+    # it "lists the existing observations" do
+    #   expect(page).to have_content observation.observation_station_id
+    # end
 
-    it "allows user to navigate to a observation's page" do
-      page.click_link('', :href => "/observations/#{observation.id}")
-
-      expect(page).to have_content "Helsinki"
-    end
+    # it "allows user to navigate to a observation's page" do
+    #   page.click_link('', :href => "/observations/#{observation.id}")
+    #
+    #   expect(page).to have_content "Helsinki"
+    # end
 
   end
 

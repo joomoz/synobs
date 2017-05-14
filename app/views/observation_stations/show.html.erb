@@ -23,11 +23,7 @@
 <p>
   <strong>
     Fmisid: <%= @observation_station.id %> |
-    Wmo: <%= @observation_station.wmo %> |
-    <!-- Year: <%= @observation_station.year %> |
-    Lpnn: <%= @observation_station.lpnn %> |
-    Elevation: <%= @observation_station.elevation %> |
-    Group: <%= @observation_station.group %> -->
+    Wmo: <%= @observation_station.wmo %>
   </strong>
 </p>
 
@@ -38,5 +34,14 @@
    Station has <%= pluralize(@observation_station.observations.count, 'observation') %>.
   <% end %>
 </p>
+
+<div class="google-maps">
+  <iframe src="//www.google.com/maps/embed/v1/place?q=<%= @observation_station.lat %>, <%= @observation_station.lon %>
+      &zoom=9
+      &key=<%= ENV['GOOGLE_API_KEY'] %>"
+      width="500" height="350"
+      frameborder="0">
+  </iframe>
+</div>
 
 <%= link_to 'Back', observation_stations_path %>

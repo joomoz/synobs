@@ -1,0 +1,41 @@
+<%= form_for(@daily_observation) do |f| %>
+  <% if @daily_observation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@daily_observation.errors.count, "error") %> prohibited this daily_observation from being saved:</h2>
+
+      <ul>
+      <% @daily_observation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :observation_station_id %><br>
+    <%= f.number_field :observation_station_id %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.date_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :t2max %><br>
+    <%= f.text_field :t2max %>
+  </div>
+  <div class="field">
+    <%= f.label :t2maxtime %><br>
+    <%= f.datetime_select :t2maxtime %>
+  </div>
+  <div class="field">
+    <%= f.label :t2min %><br>
+    <%= f.text_field :t2min %>
+  </div>
+  <div class="field">
+    <%= f.label :t2mintime %><br>
+    <%= f.datetime_select :t2mintime %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

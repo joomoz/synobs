@@ -1,17 +1,16 @@
 class ObservationsController < ApplicationController
-  require 'will_paginate/array'
   before_action :set_observation, only: [:show, :edit, :update, :destroy]
 
   # GET /observations
   # GET /observations.json
   def index
-    @observations = Observation.all
+    @observations = Observation.all#.paginate(:page => params[:page], :per_page => 50)
   end
 
   # GET /observations/1
   # GET /observations/1.json
   def show
-    #@observations = Observation.all#.paginate(:page => params[:page], :per_page => 50)
+    #@observations = Observation.all
   end
 
   # GET /observations/new

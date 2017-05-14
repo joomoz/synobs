@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :users
   resources :observations, only: [:show, :index]
+  resources :daily_observations, only: [:show, :index]
   resources :observation_stations, only: [:show, :index] #, except: [:new, :edit, :create, :update, :destroy]
   resources :favourite_stations, only: [:new, :create, :destroy]
 
@@ -16,7 +17,7 @@ Rails.application.routes.draw do
   delete 'signout', to: 'sessions#destroy'
   post 'fetch_stations', to: 'observation_stations#fetch_stations'
   post 'fetch_observations', to: 'observation_stations#fetch_observations'
-  post 'fetch_all_observations', to: 'observation_stations#fetch_all_observations'
+  post 'fetch_daily_temperatures', to: 'daily_observations#fetch_daily_temperatures'
 
   match '*path' => redirect('/'), via: :get unless Rails.env.development?
 

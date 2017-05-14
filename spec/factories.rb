@@ -24,4 +24,11 @@ FactoryGirl.define do
     observation_station_id 12345
   end
 
+  factory :daily_observation do
+    observation_station_id 12345
+    date Date.today
+    t2max 99.9
+    t2min -99.9
+  end
+
 end

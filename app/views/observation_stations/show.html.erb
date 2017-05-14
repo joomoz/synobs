@@ -1,8 +1,20 @@
-<h2> <%= @observation_station %> </h2>
+<h2> <%= @observation_station %></h2>
 
 <!-- # <% if current_user %>
 #   <%= link_to "Update observations", fetch_observations_path(:fmisid => @observation_station.id), method: :post %>
 # <% end %> -->
+<p>
+  <strong>
+    Fmisid: <%= @observation_station.id %> |
+    Wmo: <%= @observation_station.wmo %> |
+    Lat/lon: <%= @observation_station.lat %>, <%= @observation_station.lon %> |
+    <% if @observation_station.daily_observations.empty? %>
+     Station doesn't have any observations.
+    <% else %>
+     Station has <%= pluralize(@observation_station.daily_observations.count, 'daily observation')%>
+    <% end %>
+  </strong>
+</p>
 
 <% if current_user and not current_user.in? @observation_station.users%>
   <%= form_for(@favourite_station, method: "create") do |f| %>
@@ -18,22 +30,9 @@
    <% end %>
 <% end %>
 
-<br>
-
-<p>
-  <strong>
-    Fmisid: <%= @observation_station.id %> |
-    Wmo: <%= @observation_station.wmo %>
-  </strong>
-</p>
-
-<p>
-  <% if @observation_station.observations.empty? %>
-   Station doesn't have any observations.
-  <% else %>
-   Station has <%= pluralize(@observation_station.observations.count, 'observation') %>.
-  <% end %>
-</p>
+<h4>
+  Today's temperatures: <%= @observation_station.daily_observations.find_by(date: Date.today) %>
+</h4>
 
 <div class="google-maps">
   <iframe src="//www.google.com/maps/embed/v1/place?q=<%= @observation_station.lat %>, <%= @observation_station.lon %>

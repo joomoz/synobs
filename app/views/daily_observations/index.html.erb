@@ -1,0 +1,35 @@
+<h1>Daily Observations - today's temperatures</h1>
+
+<h4> Number of observations: <%= @daily_observations.count %>
+  <button class="btn btn-info btn-sm">
+    <%= link_to 'Update todays temperatures', fetch_daily_temperatures_path, method: :post %>
+  </button>
+</h4>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Observation station</th>
+      <th>Date</th>
+      <th>t2max</th>
+      <th>t2max time</th>
+      <th>t2min</th>
+      <th>t2min time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @daily_observations.each do |daily_observation| %>
+      <tr>
+        <td><%= link_to daily_observation.observation_station.name, daily_observation.observation_station %></td>
+        <td><%= daily_observation.date %></td>
+        <td><%= daily_observation.t2max %></td>
+        <td><%= daily_observation.t2maxtime %></td>
+        <td><%= daily_observation.t2min %></td>
+        <td><%= daily_observation.t2mintime %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

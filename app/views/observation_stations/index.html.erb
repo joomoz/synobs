@@ -1,13 +1,11 @@
 <h1>Observation Stations</h1>
-<p> Number of stations: <%= @observation_stations.count %>
+<h4> Number of stations: <%= @observation_stations.count %>
   <% if current_user %> <!-- and current_user.admin %> -->
-    <%= link_to "Update list", fetch_stations_path, method: :post %>
+    <button class="btn btn-info btn-sm">
+      <%= link_to 'Update list',fetch_stations_path, method: :post %>
+    </button>
   <% end %>
-  <% if current_user %> <!-- and current_user.admin %> -->
-    <%= link_to "Update todays temperatures", fetch_all_observations_path, method: :post %>
-  <% end %>
-</p>
-
+</h4>
 
 <table class="table table-hover">
   <thead>
@@ -29,8 +27,6 @@
         <td><%= link_to observation_station.name, observation_station %></td>
         <td><%= observation_station.lat %></td>
         <td><%= observation_station.lon %></td>
-        <!-- <td><%= observation_station.elevation %></td>
-        <td><%= observation_station.group %></td> -->
       </tr>
     <% end %>
   </tbody>

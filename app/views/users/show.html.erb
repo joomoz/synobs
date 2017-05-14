@@ -1,15 +1,22 @@
 <h1> <%= @user.username %></h1>
 
 <% if @user.favourites.any? %>
-  <h3>Favourite Stations</h3>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Favourite Stations</th>
+        <th>Today's temperatures</th>
+      </tr>
+    </thead>
 
-  <p>
+    <tbody>
     <% @user.favourites.each do |station| %>
-      <li>
-        <%= link_to station.name, station %>
-      </li>
+      <tr>
+        <td><%= link_to station.name, station %></td>
+        <td><%= station.daily_observations.find_by(date: Date.today) %></td>
+      </tr>
     <% end %>
-  </p>
+  </table>
 <% end %>
 
 <% if @user == current_user %>

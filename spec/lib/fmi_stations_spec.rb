@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "FmiSations" do
+describe "FmiSations API" do
   it "When HTTP GET returns one station, it is properly saved to db" do
     canned_answer = answer_with_one_station
     stub_request(:get, /.*/).to_return(body: canned_answer)

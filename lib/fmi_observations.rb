@@ -65,15 +65,18 @@ class FmiObservations
           end
         end
 
-        if (station = DailyObservation.find_by date: Date.today, observation_station_id: fmisid).nil?
-          DailyObservation.create(observation_station_id: fmisid, date: Date.today,
-            t2max: max, t2maxtime: maxTime, t2min: min, t2mintime: minTime)
-        else
-          if station.t2max < max
-            station.update(t2max: max, t2maxtime: maxTime)
-          end
-          if station.t2min > min
-            station.update(t2min: min, t2mintime: minTime)
+        # Save only observations for known stations
+        if ObservationStation.exists?(id: fmisid)
+          if (station = DailyObservation.find_by date: Date.today, observation_station_id: fmisid).nil?
+            DailyObservation.create(observation_station_id: fmisid, date: Date.today,
+              t2max: max, t2maxtime: maxTime, t2min: min, t2mintime: minTime)
+          else
+            if station.t2max < max
+              station.update(t2max: max, t2maxtime: maxTime)
+            end
+            if station.t2min > min
+              station.update(t2min: min, t2mintime: minTime)
+            end
           end
         end
       end

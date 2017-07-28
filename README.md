@@ -1,4 +1,4 @@
-# SynObs - weather observations Ruby on Rails application.
+# SynObs
 
 [![Build Status](https://travis-ci.org/joomoz/synobs.png)](https://travis-ci.org/joomoz/synobs)
 [![Code Climate](https://codeclimate.com/github/joomoz/synobs.png)](https://codeclimate.com/github/joomoz/synobs)
